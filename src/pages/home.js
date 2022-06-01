@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { List } from "../components/list";
+import { NewTask } from "../components/new-task";
 import { TaskCounter } from "../components/task-counter";
 import { taskList } from "../data/tasks";
 
@@ -19,6 +20,10 @@ export function HomePage() {
     setTasks(updatedTasks);
   };
 
+  const addTask = (newTask) => {
+    setTasks([...tasks, newTask]);
+  };
+
   const toggleComplete = (id) => {
     const updatedTasks = tasks.map((task) =>
       task.id === id ? { ...task, isComplete: !task.isComplete } : task
@@ -31,6 +36,7 @@ export function HomePage() {
     <main>
       <h1>Lista de tareas</h1>
       <TaskCounter completed={getCompleted()} />
+      <NewTask addTask={addTask} />
       <List
         deleteTask={deleteTask}
         toggleComplete={toggleComplete}
