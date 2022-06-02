@@ -36,9 +36,7 @@ export function NewTask({ addTask }) {
         placeholder="responsible"
         value={newTask.responsible}
       />
-      <button name="add" type="submit">
-        Create
-      </button>
+      <button type="submit">Create</button>
     </form>
   );
 }
