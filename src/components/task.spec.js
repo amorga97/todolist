@@ -11,6 +11,7 @@ describe("Given the component Task", () => {
   };
 
   const mockDeleteFunction = jest.fn();
+  const mockToggleComplete = jest.fn();
 
   describe("When calling it with a task", () => {
     test("Then it should be rendered", () => {
@@ -33,6 +34,20 @@ describe("Given the component Task", () => {
 
       // Assert
       expect(mockDeleteFunction).toHaveBeenCalledWith(mockTask.id);
+    });
+  });
+
+  describe("When calling it with a task and then pressing the completed checkbox", () => {
+    test("Then the passed function toggleComplete should be called", () => {
+      // Arrange
+      render(<Task task={mockTask} toggleComplete={mockToggleComplete} />);
+
+      // Act
+      const toggleCompleteButton = screen.getByRole("checkbox");
+      userEvent.click(toggleCompleteButton);
+
+      // Assert
+      expect(mockToggleComplete).toHaveBeenCalledWith(mockTask.id);
     });
   });
 });

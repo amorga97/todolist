@@ -16,6 +16,7 @@ describe("Given the component List", () => {
       isComplete: false,
     },
   ];
+
   describe("When passing an array of task objects", () => {
     test("Then a number of tasks should be in the document", () => {
       render(<List tasks={mockTasks} />);
